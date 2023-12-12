@@ -16,9 +16,14 @@ void main(){
     Member newMember = Member(id: 1, name: '홍길동', grade: Grade.BASIC);
 
     // when
-    memberService.signUp(newMember);
+    memberService.signUp(newMember); // 회원 가입 테스트
+    Member? findMember = memberService.findByIdMember(newMember.id);
+    print(findMember.toString()); // 로그가 정상적으로 나온다면 자료구조에 잘 저장 됨
+
 
     // then
+    expect(findMember, isA<Member>()); // findMember의 타입 확인
+    expect(findMember?.id, 1); // 찾은 멤버의 id값이 1로 기대를 한다.
 
 
   });
